@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "BLE Beacon Sender",
+    "slug": "ble-beacon-sender",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "android": {
+      "package": "com.anonymous.blebeaconsender",
+      "permissions": [
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.BLUETOOTH_ADVERTISE",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.BLUETOOTH_SCAN",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.WAKE_LOCK"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "minSdkVersion": 26,
+            "compileSdkVersion": 34,
+            "targetSdkVersion": 34
+          }
+        }
+      ]
+    ]
+  }
+}
