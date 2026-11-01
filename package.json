@@ -8,7 +8,7 @@
     "expo-status-bar": "~58.0.4",
     "react": "19.3.0",
     "react-native": "0.88.1",
-    "react-native-ble-advertiser": "^0.0.17"
+    "react-native-ble-plx": "^3.5.1"
   },
   "devDependencies": {
     "@types/react": "~19.3.0",
