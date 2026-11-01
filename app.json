@@ -26,11 +26,7 @@
           "android": {
             "minSdkVersion": 26,
             "compileSdkVersion": 34,
-            "targetSdkVersion": 34,
-            "compileOptions": {
-              "sourceCompatibility": "17",
-              "targetCompatibility": "17"
-            }
+            "targetSdkVersion": 34
           }
         }
       ]
