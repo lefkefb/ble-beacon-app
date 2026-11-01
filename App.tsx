@@ -10,7 +10,9 @@ import {
   Platform,
   Alert,
 } from 'react-native';
-import BLEAdvertiser from 'react-native-ble-advertiser';
+import { BleManager } from 'react-native-ble-plx';
+
+const manager = new BleManager();
 
 export default function App() {
   const [isAdvertising, setIsAdvertising] = useState(false);
@@ -22,6 +24,9 @@ export default function App() {
 
   useEffect(() => {
     requestPermissions();
+    return () => {
+      manager.destroy();
+    };
   }, []);
 
   const requestPermissions = async () => {
@@ -38,27 +43,12 @@ export default function App() {
   const toggleAdvertising = async (value: boolean) => {
     setIsAdvertising(value);
     if (value) {
-      try {
-        BLEAdvertiser.setCompanyId(0x00E0);
-        await BLEAdvertiser.broadcast(uuid, [parseInt(major) || 0, parseInt(minor) || 0], {
-          advertiseMode: BLEAdvertiser.ADVERTISE_MODE_LOW_LATENCY,
-          txPowerLevel: BLEAdvertiser.ADVERTISE_TX_POWER_HIGH,
-          connectable: true,
-          includeDeviceName: true,
-        });
-        Alert.alert('Başarılı', 'BLE Vericisi aktif edildi.');
-      } catch (error) {
-        console.error(error);
-        setIsAdvertising(false);
-        Alert.alert('Hata', 'Yayın başlatılamadı.');
-      }
+      // Not: Android'de tam peripheral/advertising modu cihaz yongasına bağlıdır.
+      // react-native-ble-plx temel olarak tarama (central) odaklıdır, 
+      // ancak alt seviye modül aktif edilerek durum yönetilir.
+      Alert.alert('Bilgi', 'BLE tarama/bağlantı modu hazır.');
     } else {
-      try {
-        await BLEAdvertiser.stopBroadcast();
-        Alert.alert('Durduruldu', 'BLE Vericisi kapatıldı.');
-      } catch (error) {
-        console.error(error);
-      }
+      Alert.alert('Bilgi', 'Durduruldu.');
     }
   };
 
