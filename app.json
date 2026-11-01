@@ -26,7 +26,12 @@
           "android": {
             "minSdkVersion": 26,
             "compileSdkVersion": 34,
-            "targetSdkVersion": 34
+            "targetSdkVersion": 34,
+            "kotlinVersion": "1.9.0",
+            "compileOptions": {
+              "sourceCompatibility": "17",
+              "targetCompatibility": "17"
+            }
           }
         }
       ]
